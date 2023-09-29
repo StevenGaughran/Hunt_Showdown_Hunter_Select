@@ -1,28 +1,21 @@
-import random
+import json
 
-# ~~~ Reads a .txt file that contains all legendary hunters in the game ~~~
-def compiled_hunter_list():
-    my_file = open("hunters.txt", "r")
-    data = my_file.read()
-    hunter_list = data.split("\n")
-    my_file.close()
-    return hunter_list
+# The hunter data.
+# Use hunter_list()[0] for the base list, hunter_list()[1] for owned/TRUE hunters, or hunter_list()[2] for unowned/FALSE hunters.
+def hunter_list():
+    with open("hunter_list.json", "r") as i:
+        hunters = json.load(i)
+        owned = [k for k, v in hunters.items() if v == True]
+        not_owned = [k for k, v in hunters.items() if v == False]
+    return hunters
 
-# ~~~ Randomly selects a hunter from "compiled_hunter_list" ~~~
-def random_hunter_selection(hunters):
-    selection = random.choice(hunters)
-    print(selection)
+# The following two functions are me compensating for the fact that I couldn't figure something out.
+# I figured it out, so they are PROBABLY no longer necessary?
+# def owned_hunters(list):
+#     owned = [k for k, v in list.items() if v == True]
+#     return owned
+#
+# def unowned_hunters(list):
+#     unowned = [k for k, v in list.items() if v == False]
+#     return unowned
 
-# ~~~ Generates a dictionary from "compiled_hunter_list" ~~~
-# ~~~ This is for future use in organizing owned/unowned hunters ~~~
-def hunt_dict(data):
-    big_dict = {}
-    for i in data:
-        big_dict[i] = False
-    return big_dict
-
-# ~~~ Sorting the True/False data from "hunt_dict" ~~~
-def sorting(mess):
-    return list(mess.keys()),[list(mess.values()).index(False)]
-
-sorting(hunt_dict(compiled_hunter_list()))

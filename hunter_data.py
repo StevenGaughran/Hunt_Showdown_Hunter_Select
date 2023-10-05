@@ -1,8 +1,7 @@
 import json
 import random
 
-# The hunter data.
-# Use hunter_list()[0] for the base list, hunter_list()[1] for owned/TRUE hunters, or hunter_list()[2] for unowned/FALSE hunters.
+"""The data pulled from 'hunter_list.json', and manipulated into useable form."""
 def hunter_list():
     with open("hunter_list.json", "r") as i:
         hunters = json.load(i)
@@ -10,15 +9,13 @@ def hunter_list():
         not_owned = [k for k, v in hunters.items() if v == False]
     return hunters
 
-# The following two functions are me compensating for the fact that I couldn't figure something out.
-# I figured it out, so they are PROBABLY no longer necessary?
-# def owned_hunters(list):
-#     owned = [k for k, v in list.items() if v == True]
-#     return owned
-#
-# def unowned_hunters(list):
-#     unowned = [k for k, v in list.items() if v == False]
-#     return unowned
+def owned_hunters(list):
+    owned = [k for k, v in list.items() if v == True]
+    return owned
+
+def unowned_hunters(list):
+    unowned = [k for k, v in list.items() if v == False]
+    return unowned
 
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 

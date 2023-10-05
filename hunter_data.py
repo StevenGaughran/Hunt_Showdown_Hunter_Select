@@ -5,8 +5,6 @@ import random
 def hunter_list():
     with open("hunter_list.json", "r") as i:
         hunters = json.load(i)
-        owned = [k for k, v in hunters.items() if v == True]
-        not_owned = [k for k, v in hunters.items() if v == False]
     return hunters
 
 def owned_hunters(list):

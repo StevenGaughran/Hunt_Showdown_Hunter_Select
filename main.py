@@ -67,6 +67,7 @@ def the_button():
         selection_list.append(y)
     selection_prompt.config(text=random.choice(selection_list))
 
+
 run_it = Button(
     text="Choose your fate!",
     width=20,

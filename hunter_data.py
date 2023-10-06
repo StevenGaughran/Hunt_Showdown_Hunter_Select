@@ -15,6 +15,13 @@ def unowned_hunters(list):
     unowned = [k for k, v in list.items() if v == False]
     return unowned
 
+"""Gets the index numbers from the checkboxes"""
+def get_numbers(numbers):
+    for i in numbers:
+        numbers = []
+        x = i.get()
+        return numbers
+
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 
 Exports string with hunter names. 
@@ -39,6 +46,3 @@ def the_selection(hunter_list=None):
 """The goal is to update the .json data using the data from hunter_list"""
 def update_json(hunter_list=None):
     pass
-
-
-    return ["Jan", "Casey"]

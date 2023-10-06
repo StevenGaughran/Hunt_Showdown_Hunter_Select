@@ -44,12 +44,6 @@ text.pack()
 
 populate_hunter_list()
 
-def get_numbers(numbers):
-    for i in numbers:
-        numbers = []
-        x = i.get()
-        print(x)
-
 # The button that runs the function that randomly selects your Hunter.
 def the_button():
     # list_numbers = hunter_list.curselection()

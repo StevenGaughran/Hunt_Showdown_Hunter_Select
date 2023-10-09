@@ -50,3 +50,4 @@ def the_selection(hunter_list=None):
 """The goal is to update the .json data using the data from hunter_list"""
 def update_json(hunter_list=None):
     pass
+    return ["Jan", "Casey"]

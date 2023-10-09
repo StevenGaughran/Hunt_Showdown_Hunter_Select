@@ -69,3 +69,8 @@ def update_json(old_data=None, new_data=None):
             if i in new_data:
                 pass
         pass
+
+"""The goal is to update the .json data using the data from hunter_list"""
+def update_json(hunter_list=None):
+    pass
+    return ["Jan", "Casey"]

@@ -1,7 +1,10 @@
 import json
 import random
 
-"""The data pulled from 'hunter_list.json', and manipulated into useable form."""
+"""The data pulled from 'hunter_list.json', and manipulated into useable form.
+Hunter_list pulls the json data.
+Owned_hunters searches the json data for True values.
+Unowned_hunters searches the json data for False values."""
 def hunter_list():
     with open("hunter_list.json", "r") as i:
         hunters = json.load(i)
@@ -15,7 +18,8 @@ def unowned_hunters(list):
     unowned = [k for k, v in list.items() if v == False]
     return unowned
 
-"""Gets the index numbers from the checkboxes"""
+"""Gets the index numbers from the checkboxes.
+To be used in ugly_child(checkbox_selection)."""
 def get_numbers(numbers):
     for i in numbers:
         numbers = []

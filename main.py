@@ -3,11 +3,14 @@ import tkinter.scrolledtext
 from tkinter import *
 import hunter_data as hd
 
+"""This fills in the window with hunter names, and pre-selects them if they are 'owned'.
+Populates the hunter_list_numbers."""
 # Just trying to force GitHub to push.
 
 """This fills in the window with hunter names, and pre-selects them if they are 'owned'."""
 hunter_list_numbers = []
 def populate_hunter_list():
+    hunter_list_numbers = []
     for i in hd.hunter_list():
         if i in hd.owned_hunters(hd.hunter_list()):
             var = IntVar()
@@ -30,6 +33,7 @@ def populate_hunter_list():
             hunter_list_numbers.append(var)
             text.window_create('end', window=cb)
             text.insert('end', '\n')
+    return hunter_list_numbers
 
 # Tkinter setup
 window = Tk()
@@ -44,6 +48,9 @@ selection_prompt.pack()
 text = tkinter.scrolledtext.ScrolledText()
 text.pack()
 
+# Calling the function
+hunter_list_numbers = populate_hunter_list()
+=======
 populate_hunter_list()
 
 # The button that runs the function that randomly selects your Hunter.
@@ -61,8 +68,6 @@ def the_button():
     #     selection_list.append(y)
     # selection_prompt.config(text=random.choice(selection_list))
     pass
-
-
 
 run_it = Button(
     text="Choose your fate!",

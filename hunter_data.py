@@ -1,24 +1,30 @@
 import json
 import random
 
-# The hunter data.
-# Use hunter_list()[0] for the base list, hunter_list()[1] for owned/TRUE hunters, or hunter_list()[2] for unowned/FALSE hunters.
+"""The data pulled from 'hunter_list.json', and manipulated into useable form.
+Hunter_list pulls the json data.
+Owned_hunters searches the json data for True values.
+Unowned_hunters searches the json data for False values."""
 def hunter_list():
     with open("hunter_list.json", "r") as i:
         hunters = json.load(i)
-        owned = [k for k, v in hunters.items() if v == True]
-        not_owned = [k for k, v in hunters.items() if v == False]
     return hunters
 
-# The following two functions are me compensating for the fact that I couldn't figure something out.
-# I figured it out, so they are PROBABLY no longer necessary?
-# def owned_hunters(list):
-#     owned = [k for k, v in list.items() if v == True]
-#     return owned
-#
-# def unowned_hunters(list):
-#     unowned = [k for k, v in list.items() if v == False]
-#     return unowned
+def owned_hunters(list):
+    owned = [k for k, v in list.items() if v == True]
+    return owned
+
+def unowned_hunters(list):
+    unowned = [k for k, v in list.items() if v == False]
+    return unowned
+
+"""Gets the index numbers from the checkboxes.
+To be used in ugly_child(checkbox_selection)."""
+def get_numbers(numbers):
+    for i in numbers:
+        numbers = []
+        x = i.get()
+        return numbers
 
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 
@@ -44,6 +50,4 @@ def the_selection(hunter_list=None):
 """The goal is to update the .json data using the data from hunter_list"""
 def update_json(hunter_list=None):
     pass
-
-
     return ["Jan", "Casey"]

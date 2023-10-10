@@ -5,6 +5,9 @@ import hunter_data as hd
 
 """This fills in the window with hunter names, and pre-selects them if they are 'owned'.
 Populates the hunter_list_numbers with returned IntVars."""
+
+"""This fills in the window with hunter names, and pre-selects them if they are 'owned'."""
+hunter_list_numbers = []
 def populate_hunter_list():
     hunter_list_numbers = []
     for i in hd.hunter_list():
@@ -49,6 +52,8 @@ text.pack()
 
 # Calling the function
 hunter_list_numbers = populate_hunter_list()
+
+populate_hunter_list()
 
 run_it = Button(
     text="Choose your fate!",

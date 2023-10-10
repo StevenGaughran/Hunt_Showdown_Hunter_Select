@@ -1,5 +1,6 @@
 import pytest
 from hunter_data import ugly_child, the_selection
+from tkinter import IntVar
 
 def test_happy_day():
     checkbox_selection = [0,1,0,0,1,0]
@@ -20,3 +21,12 @@ def test_the_selection():
     picked_one = the_selection(chosen_ones)
     assert picked_one in chosen_ones
     assert type(picked_one) == "c"
+
+def test_get_numbers():
+    numbers = IntVar()
+    numbers.set(100)
+    for i in numbers:
+        number_list = []
+        x = i.get()
+        number_list.append(x)
+        assert x == [100]

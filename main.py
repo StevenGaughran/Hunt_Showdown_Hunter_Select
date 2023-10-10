@@ -4,7 +4,7 @@ from tkinter import *
 import hunter_data as hd
 
 """This fills in the window with hunter names, and pre-selects them if they are 'owned'.
-Populates the hunter_list_numbers."""
+Populates the hunter_list_numbers with returned IntVars."""
 def populate_hunter_list():
     hunter_list_numbers = []
     for i in hd.hunter_list():
@@ -31,6 +31,9 @@ def populate_hunter_list():
             text.insert('end', '\n')
     return hunter_list_numbers
 
+"""The setup for the Tkinter GUI.
+Will eventually be made its own Class in another document.
+For now, it works."""
 # Tkinter setup
 window = Tk()
 window.title("Rise up, dead man! A 'Hunt: Showdown' random hunter selector!")
@@ -47,27 +50,11 @@ text.pack()
 # Calling the function
 hunter_list_numbers = populate_hunter_list()
 
-# The button that runs the function that randomly selects your Hunter.
-def the_button():
-    # list_numbers = hunter_list.curselection()
-    # # This writes the index locations of selected numbers to a Word file, for future list pre-generation.
-    # with open ("hunter_list_index.txt", "w") as edit:
-    #     edit.truncate(0)
-    #     edit.write(str(list_numbers))
-    #
-    # # This gives you your randomly selected hunter.
-    # selection_list = []
-    # for i in list_numbers:
-    #     y = hunter_list.get(first=i)
-    #     selection_list.append(y)
-    # selection_prompt.config(text=random.choice(selection_list))
-    pass
-
 run_it = Button(
     text="Choose your fate!",
     width=20,
     height=4,
-    command=the_button
+    command=hd.the_button
 )
 run_it.pack()
 

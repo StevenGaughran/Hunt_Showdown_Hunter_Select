@@ -10,21 +10,25 @@ def hunter_list():
         hunters = json.load(i)
     return hunters
 
+# A list of owned hunters, based on True key values in 'hunter_list.json'
 def owned_hunters(list):
     owned = [k for k, v in list.items() if v == True]
     return owned
 
+# A list of unowned hunters, based on False key values in 'hunter_list.json'
 def unowned_hunters(list):
     unowned = [k for k, v in list.items() if v == False]
     return unowned
 
 """Gets the index numbers from the checkboxes.
-To be used in ugly_child(checkbox_selection)."""
+To be used in ugly_child(checkbox_selection).
+Currently, problematic. It creates a whole BUNCH of lists, rather than one list with integers."""
 def get_numbers(numbers):
     for i in numbers:
-        numbers = []
+        number_list = []
         x = i.get()
-        return numbers
+        number_list.append(x)
+        return number_list
 
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 
@@ -45,7 +49,7 @@ def ugly_child(checkbox_selection=None, hunter_list=None):
 Hunter_list comes from ugly_child.
 Ouput will be a randomly selected string from hunter_list."""
 def the_selection(hunter_list=None):
-    return random.choice(hunter_list)
+    print(random.choice(hunter_list))
 
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
@@ -59,18 +63,26 @@ def update_hunter_list(big_hunter_list, chosen_ones):
             updated_hunter_list[i] = False
     return updated_hunter_list
 
+"""The OLD button that runs the function that randomly selects your Hunter.
+Will likely need to rewrite this from scratch."""
+# def the_button():
+#     # list_numbers = hunter_list.curselection()
+#     # # This writes the index locations of selected numbers to a Word file, for future list pre-generation.
+#     # with open ("hunter_list_index.txt", "w") as edit:
+#     #     edit.truncate(0)
+#     #     edit.write(str(list_numbers))
+#     #
+#     # # This gives you your randomly selected hunter.
+#     # selection_list = []
+#     # for i in list_numbers:
+#     #     y = hunter_list.get(first=i)
+#     #     selection_list.append(y)
+#     # selection_prompt.config(text=random.choice(selection_list))
+
 """Updates the json database of hunters based on user input.
-Should I call the json fresh? Or use the 'hunter_list' function defined above?
-I'm going to have to call the json data again in any case..."""
-def update_json(old_data=None, new_data=None):
+Replaces the dictionary in 'hunter_list.json' with that from 'update_hunter_list' function'
+"""
+def update_json(new_data=None):
     with open('hunter_list.json', 'w') as file:
         data = json.load(file)
-        for i in data:
-            if i in new_data:
-                pass
         pass
-
-"""The goal is to update the .json data using the data from hunter_list"""
-def update_json(hunter_list=None):
-    pass
-    return ["Jan", "Casey"]

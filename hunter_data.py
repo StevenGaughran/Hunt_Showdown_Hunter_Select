@@ -65,7 +65,7 @@ def update_hunter_list(big_hunter_list, chosen_ones):
 
 """The OLD button that runs the function that randomly selects your Hunter.
 Will likely need to rewrite this from scratch."""
-# def the_button():
+def the_button():
 #     # list_numbers = hunter_list.curselection()
 #     # # This writes the index locations of selected numbers to a Word file, for future list pre-generation.
 #     # with open ("hunter_list_index.txt", "w") as edit:
@@ -78,6 +78,7 @@ Will likely need to rewrite this from scratch."""
 #     #     y = hunter_list.get(first=i)
 #     #     selection_list.append(y)
 #     # selection_prompt.config(text=random.choice(selection_list))
+    pass
 
 """Updates the json database of hunters based on user input.
 Replaces the dictionary in 'hunter_list.json' with that from 'update_hunter_list' function'

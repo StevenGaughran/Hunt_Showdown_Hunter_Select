@@ -1,14 +1,11 @@
 import random
-import tkinter.scrolledtext
-from tkinter import *
+from tkinter import Tk,Label,scrolledtext,Button,IntVar,Checkbutton
 import hunter_data as hd
 
 """This fills in the window with hunter names, and pre-selects them if they are 'owned'.
-Populates the hunter_list_numbers."""
-# Just trying to force GitHub to push.
 
-"""This fills in the window with hunter names, and pre-selects them if they are 'owned'."""
-hunter_list_numbers = []
+Populates the hunter_list_numbers with returned IntVars."""
+
 def populate_hunter_list():
     hunter_list_numbers = []
     for i in hd.hunter_list():
@@ -35,6 +32,9 @@ def populate_hunter_list():
             text.insert('end', '\n')
     return hunter_list_numbers
 
+"""The setup for the Tkinter GUI.
+Will eventually be made its own Class in another document.
+For now, it works."""
 # Tkinter setup
 window = Tk()
 window.title("Rise up, dead man! A 'Hunt: Showdown' random hunter selector!")
@@ -45,14 +45,16 @@ selection_prompt = Label(text="YOUR NEXT HUNTER IS...")
 selection_prompt.pack()
 
 # Tkinter Text
-text = tkinter.scrolledtext.ScrolledText()
+text = scrolledtext.ScrolledText()
 text.pack()
 
 # Calling the function
 hunter_list_numbers = populate_hunter_list()
-=======
+
 populate_hunter_list()
 
+"""The Button that spits up a random selection.
+Currently here, but will probably be relocated to the GUI file in the future."""
 # The button that runs the function that randomly selects your Hunter.
 def the_button():
     # list_numbers = hunter_list.curselection()
@@ -73,7 +75,7 @@ run_it = Button(
     text="Choose your fate!",
     width=20,
     height=4,
-    command=the_button
+    command=hd.the_button
 )
 run_it.pack()
 

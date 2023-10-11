@@ -1,5 +1,8 @@
 """Placeholder file.
 Eventually, this is where I'm going to be creating the actual Tkinter GUI."""
+
+from tkinter import Tk,Label,scrolledtext,Button
+from hunter_data import the_button
 from tkinter import Tk,Label,scrolledtext
 
 class Gui:
@@ -15,3 +18,15 @@ class Gui:
         # Tkinter Text
         text = scrolledtext.ScrolledText()
         text.pack()
+
+
+        # The Button
+        run_it = Button(
+            text="Choose your fate!",
+            width=20,
+            height=4,
+            command=the_button
+        )
+        run_it.pack()
+
+        window.mainloop()

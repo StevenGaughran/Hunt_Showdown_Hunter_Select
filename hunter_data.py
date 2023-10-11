@@ -73,8 +73,35 @@ def random_hunter_selection(chosen_ones):
     # selection_prompt.config(text=random.choice(chosen_ones))
     pass
 
+
 """The button that pulls all this nonsense together."""
 def the_button():
+  pass
+"""Determines ownership of hunters.
+Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
+Switches values in the dictionary from False to True."""
+def update_hunter_list(big_hunter_list, chosen_ones):
+    updated_hunter_list = big_hunter_list
+    for i in chosen_ones:
+        if i in updated_hunter_list:
+            updated_hunter_list[i] = True
+        else:
+            updated_hunter_list[i] = False
+    return updated_hunter_list
+
+"""Updates the json database of hunters based on user input.
+Should I call the json fresh? Or use the 'hunter_list' function defined above?
+I'm going to have to call the json data again in any case..."""
+def update_json(old_data=None, new_data=None):
+    with open('hunter_list.json', 'w') as file:
+        data = json.load(file)
+        for i in data:
+            if i in new_data:
+                pass
+        pass
+
+"""The goal is to update the .json data using the data from hunter_list"""
+def update_json(hunter_list=None):
     pass
 
 """Updates the json database of hunters based on user input.

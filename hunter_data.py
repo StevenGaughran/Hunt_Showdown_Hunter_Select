@@ -1,6 +1,8 @@
 import json
 import random
 
+import main
+
 """The data pulled from 'hunter_list.json', and manipulated into useable form.
 Hunter_list pulls the json data.
 Owned_hunters searches the json data for True values.
@@ -27,7 +29,7 @@ def get_numbers(numbers):
     for i in numbers:
         x = i.get()
         number_list.append(x)
-    print(number_list)
+    return number_list
 
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 
@@ -62,27 +64,18 @@ def update_hunter_list(big_hunter_list, chosen_ones):
             updated_hunter_list[i] = False
     return updated_hunter_list
 
-"""The OLD button that runs the function that randomly selects your Hunter.
-Will likely need to rewrite this from scratch."""
+"""The function that randomly selects your Hunter from 'ugly_child'."""
+def random_hunter_selection(chosen_ones):
+    main.selection_prompt.config(text=random.choice(chosen_ones))
+
+"""The button that pulls all this nonsense together."""
 def the_button():
-#     # list_numbers = hunter_list.curselection()
-#     # # This writes the index locations of selected numbers to a Word file, for future list pre-generation.
-#     # with open ("hunter_list_index.txt", "w") as edit:
-#     #     edit.truncate(0)
-#     #     edit.write(str(list_numbers))
-#     #
-#     # # This gives you your randomly selected hunter.
-#     # selection_list = []
-#     # for i in list_numbers:
-#     #     y = hunter_list.get(first=i)
-#     #     selection_list.append(y)
-#     # selection_prompt.config(text=random.choice(selection_list))
     pass
 
 """Updates the json database of hunters based on user input.
 Replaces the dictionary in 'hunter_list.json' with that from 'update_hunter_list' function'
 """
 def update_json(new_data=None):
-    with open('hunter_list.json', 'w') as file:
+    with open('hunter_list.json', 'r') as file:
         data = json.load(file)
         pass

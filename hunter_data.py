@@ -1,8 +1,6 @@
 import json
 import random
 
-import main
-
 """The data pulled from 'hunter_list.json', and manipulated into useable form.
 Hunter_list pulls the json data.
 Owned_hunters searches the json data for True values.
@@ -21,6 +19,12 @@ def owned_hunters(list):
 def unowned_hunters(list):
     unowned = [k for k, v in list.items() if v == False]
     return unowned
+
+def hunter_names(big_list):
+    h_list = []
+    for i in big_list:
+        h_list.append(i)
+    return h_list
 
 """Gets the index numbers from the checkboxes.
 To be used in ugly_child(checkbox_selection)."""
@@ -66,7 +70,8 @@ def update_hunter_list(big_hunter_list, chosen_ones):
 
 """The function that randomly selects your Hunter from 'ugly_child'."""
 def random_hunter_selection(chosen_ones):
-    main.selection_prompt.config(text=random.choice(chosen_ones))
+    # selection_prompt.config(text=random.choice(chosen_ones))
+    pass
 
 """The button that pulls all this nonsense together."""
 def the_button():
@@ -79,3 +84,9 @@ def update_json(new_data=None):
     with open('hunter_list.json', 'r') as file:
         data = json.load(file)
         pass
+
+"""Pulling it all together."""
+def the_symphony():
+    # nums = hd.get_numbers(hunter_list_numbers)
+    # selection = hd.ugly_child(nums, hd.hunter_names(hd.hunter_list()))
+    pass

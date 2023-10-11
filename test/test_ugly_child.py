@@ -1,4 +1,5 @@
 import pytest
+import random
 from hunter_data import ugly_child, the_selection
 from tkinter import IntVar
 
@@ -47,3 +48,8 @@ def test_update_hunter_list():
     assert big_hunter_list == {"Jan": True,
                                "Casey": True,
                                "Scott": False}
+
+def test_random_selection():
+    chosen_ones = ["Bill", "Harry", "Karl"]
+    print(random.choice(chosen_ones))
+

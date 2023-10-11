@@ -24,11 +24,11 @@ def unowned_hunters(list):
 To be used in ugly_child(checkbox_selection).
 Currently, problematic. It creates a whole BUNCH of lists, rather than one list with integers."""
 def get_numbers(numbers):
+    number_list = []
     for i in numbers:
-        number_list = []
         x = i.get()
         number_list.append(x)
-        return number_list
+    print(number_list)
 
 """Gets the names necessary for random selection.
 Takes the two lists and compares values. 

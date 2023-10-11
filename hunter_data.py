@@ -21,8 +21,7 @@ def unowned_hunters(list):
     return unowned
 
 """Gets the index numbers from the checkboxes.
-To be used in ugly_child(checkbox_selection).
-Currently, problematic. It creates a whole BUNCH of lists, rather than one list with integers."""
+To be used in ugly_child(checkbox_selection)."""
 def get_numbers(numbers):
     number_list = []
     for i in numbers:

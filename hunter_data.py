@@ -79,33 +79,25 @@ def ugly_child(get_numbers=None, hunter_names=None):
             chosen_ones.append(hunter_names[index])
     return chosen_ones
 
-"""Determines ownership of hunters.
-Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
-Switches values in the dictionary from False to True."""
-def update_hunter_list(big_hunter_list, chosen_ones):
-    updated_hunter_list = big_hunter_list
-    for i in updated_hunter_list:
-        if i in chosen_ones:
-            updated_hunter_list[i] = True
-        else:
-            updated_hunter_list[i] = False
-    return updated_hunter_list
-
 """The function that randomly selects your Hunter from 'ugly_child'."""
 def random_hunter_selection(ugly_child=None):
     selection = random.choice(ugly_child)
     return selection
 
-"""Updates the json database of hunters based on user input."""
+"""Updates the json database of hunters based on user input.
+Checks the output of 'chosen_ones' against the master hunter list.
+If the names in 'chosen_ones' are in the master list, makes the appropriate value 'true'.
+Otherwise, makes it 'false'."""
 def update_json(ugly_child=None):
-    with open('hunter_list.json', 'w') as file:
+    with open('hunter_list.json', 'r') as file:
         data = json.load(file)
         for i in data:
             if i in ugly_child:
                 data[i] = True
             else:
                 data[i] = False
-        json.dump(data,file)
+    with open('hunter_list.json', 'w') as f:
+        json.dump(data,f)
 
 """The button that pulls all this nonsense together.
 THIS MAY BE PROBLEMATIC. CANNOT CALL A () IN A BUTTON command= LINE
@@ -116,3 +108,4 @@ def the_button(hunter_list_numbers=None, selection_prompt=None):
         hunter_names=hunter_names(hunter_list()))
     selection = random_hunter_selection(ugly_child=chosen_ones)
     selection_prompt.config(text=selection)
+    update_json(ugly_child=chosen_ones)

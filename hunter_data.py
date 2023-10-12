@@ -78,7 +78,7 @@ def ugly_child(get_numbers=None, hunter_names=None):
     # Find the location of i in the hunter_list
             chosen_ones.append(hunter_names[index])
     return chosen_ones
-
+ 
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
 Switches values in the dictionary from False to True."""

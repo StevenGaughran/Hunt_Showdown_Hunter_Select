@@ -1,7 +1,9 @@
 """Placeholder file.
 Eventually, this is where I'm going to be creating the actual Tkinter GUI."""
+
 from tkinter import Tk,Label,scrolledtext,Button
 from hunter_data import the_button
+from tkinter import Tk,Label,scrolledtext
 
 class Gui():
     def __init__(self):
@@ -16,6 +18,7 @@ class Gui():
         # Tkinter Text
         text = scrolledtext.ScrolledText()
         text.pack()
+
 
         # The Button
         run_it = Button(

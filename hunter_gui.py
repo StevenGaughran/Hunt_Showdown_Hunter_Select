@@ -3,7 +3,7 @@ Eventually, this is where I'm going to be creating the actual Tkinter GUI."""
 from tkinter import Tk,Label,scrolledtext,Button
 from hunter_data import the_button
 
-class Gui:
+class Gui():
     def __init__(self):
         window = Tk()
         window.title("Rise up, dead man! A 'Hunt: Showdown' random hunter selector!")

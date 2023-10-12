@@ -1,6 +1,6 @@
 import json
 import random
-from tkinter import Tk,Label,scrolledtext,Button,IntVar,Checkbutton
+from tkinter import IntVar,Checkbutton
 
 """The data pulled from 'hunter_list.json', and manipulated into useable form.
 Hunter_list pulls the json data.
@@ -12,19 +12,19 @@ def hunter_list():
     return hunters
 
 # A list of owned hunters, based on True key values in 'hunter_list.json'
-def owned_hunters(list):
-    owned = [k for k, v in list.items() if v == True]
+def owned_hunters(hunter_list=None):
+    owned = [k for k, v in hunter_list.items() if v == True]
     return owned
 
 # A list of unowned hunters, based on False key values in 'hunter_list.json'
-def unowned_hunters(list):
-    unowned = [k for k, v in list.items() if v == False]
+def unowned_hunters(hunter_list=None):
+    unowned = [k for k, v in hunter_list.items() if v == False]
     return unowned
 
 # Creates a list of Hunter names derived from 'hunter_list'
-def hunter_names(big_list):
+def hunter_names(hunter_list=None):
     h_list = []
-    for i in big_list:
+    for i in hunter_list:
         h_list.append(i)
     return h_list
 
@@ -58,9 +58,9 @@ def populate_hunter_list(text=None):
 
 """Gets the index numbers from the checkboxes.
 To be used in ugly_child(checkbox_selection)."""
-def get_numbers(numbers):
+def get_numbers(hunter_list_numbers=None):
     number_list = []
-    for i in numbers:
+    for i in hunter_list_numbers:
         x = i.get()
         number_list.append(x)
     return number_list
@@ -69,81 +69,50 @@ def get_numbers(numbers):
 Takes the two lists and compares values. 
 Exports string with hunter names. 
 For example, checkbox_selection is a list of integers pulled from the selected checkboxes.
-Hunter_list is pulled from keys from hd.hunter_data.
-It is going to return a list of strings."""
-def ugly_child(checkbox_selection=None, hunter_list=None):
+Returns a list of strings."""
+def ugly_child(get_numbers=None, hunter_names=None):
     chosen_ones = []
     # Find the location of all 1 in checkbox_selection
-    for index, element in enumerate(checkbox_selection):
+    for index, element in enumerate(get_numbers):
         if element == 1:
     # Find the location of i in the hunter_list
-            chosen_ones.append(hunter_list[index])
+            chosen_ones.append(hunter_names[index])
     return chosen_ones
-
-"""Randomly selects from the ugly_child function.
-Hunter_list comes from ugly_child.
-Ouput will be a randomly selected string from hunter_list."""
-def the_selection(hunter_list=None):
-    print(random.choice(hunter_list))
 
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
 Switches values in the dictionary from False to True."""
 def update_hunter_list(big_hunter_list, chosen_ones):
     updated_hunter_list = big_hunter_list
-    for i in chosen_ones:
-        if i in updated_hunter_list:
+    for i in updated_hunter_list:
+        if i in chosen_ones:
             updated_hunter_list[i] = True
         else:
             updated_hunter_list[i] = False
     return updated_hunter_list
 
 """The function that randomly selects your Hunter from 'ugly_child'."""
-def random_hunter_selection(chosen_ones=None, selection_prompt=None):
-    selection_prompt.config(text=random.choice(chosen_ones)) #How to actualize this?
-    pass
+def random_hunter_selection(ugly_child=None):
+    selection = random.choice(ugly_child)
+    return selection
 
-"""The button that pulls all this nonsense together."""
-def the_button():
-  pass
-"""Determines ownership of hunters.
-Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
-Switches values in the dictionary from False to True."""
-def update_hunter_list(big_hunter_list, chosen_ones):
-    updated_hunter_list = big_hunter_list
-    for i in chosen_ones:
-        if i in updated_hunter_list:
-            updated_hunter_list[i] = True
-        else:
-            updated_hunter_list[i] = False
-    return updated_hunter_list
-
-"""Updates the json database of hunters based on user input.
-Should I call the json fresh? Or use the 'hunter_list' function defined above?
-I'm going to have to call the json data again in any case..."""
-def update_json(old_data=None, new_data=None):
+"""Updates the json database of hunters based on user input."""
+def update_json(ugly_child=None):
     with open('hunter_list.json', 'w') as file:
         data = json.load(file)
         for i in data:
-            if i in new_data:
-                pass
-        pass
+            if i in ugly_child:
+                data[i] = True
+            else:
+                data[i] = False
+        json.dump(data,file)
 
-"""The goal is to update the .json data using the data from hunter_list"""
-def update_json(hunter_list=None):
-    pass
-
-"""Updates the json database of hunters based on user input.
-Replaces the dictionary in 'hunter_list.json' with that from 'update_hunter_list' function'
-Can I combine this with 'update_hunter_list' above? Probably!
+"""The button that pulls all this nonsense together.
+THIS MAY BE PROBLEMATIC. CANNOT CALL A () IN A BUTTON command= LINE
 """
-def update_json(new_data=None):
-    with open('hunter_list.json', 'r') as file:
-        data = json.load(file)
-        pass
-
-"""The button that pulls all this nonsense together."""
-def the_button(hunter_list_numbers=None):
-    nums = get_numbers(hunter_list_numbers) # Not sure how to use this to make the whole thing work?
-    selection = ugly_child(nums, hunter_names(hunter_list()))
-    random_hunter_selection(selection)
+def the_button(hunter_list_numbers=None, selection_prompt=None):
+    chosen_ones = ugly_child(
+        get_numbers=get_numbers(hunter_list_numbers),
+        hunter_names=hunter_names(hunter_list()))
+    selection = random_hunter_selection(ugly_child=chosen_ones)
+    selection_prompt.config(text=selection)

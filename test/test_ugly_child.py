@@ -1,6 +1,6 @@
 import pytest
 import random
-from hunter_data import ugly_child, the_selection
+from hunter_data import ugly_child, random_hunter_selection
 from tkinter import IntVar
 
 @pytest.mark.skip
@@ -20,7 +20,7 @@ def test_happy_day_many():
 @pytest.mark.skip(reason="Need to learn the type.")
 def test_the_selection():
     chosen_ones = ['a', 'b', 'c']
-    picked_one = the_selection(chosen_ones)
+    picked_one = random_hunter_selection(chosen_ones)
     assert picked_one in chosen_ones
     assert type(picked_one) == "c"
 
@@ -34,23 +34,27 @@ def test_get_numbers():
         number_list.append(x)
     assert x == [100]
 
-@pytest.mark.skip(reason="Success!")
+# @pytest.mark.skip(reason="Success!")
+# Change first 'for' loop to look through the big_hunter_list, not chosen_ones.
 def test_update_hunter_list():
     chosen_ones = ["Jan", "Casey"]
     big_hunter_list = {"Jan": False,
                        "Casey": True,
-                       "Scott": False}
-    for i in chosen_ones:
-        if i in big_hunter_list:
+                       "Scott": False,
+                       "Steve": True}
+    for i in big_hunter_list:
+        if i in chosen_ones:
             big_hunter_list[i] = True
         else:
             big_hunter_list[i] = False
     assert big_hunter_list == {"Jan": True,
                                "Casey": True,
-                               "Scott": False}
+                               "Scott": False,
+                               "Steve": False}
 
-# How do I test for a random variance?
+
+@pytest.mark.skip(reason="Works")
 def test_random_selection():
     chosen_ones = ["Bill", "Harry", "Karl"]
-    print(random.choice(chosen_ones))
-
+    selection = random.choice(chosen_ones)
+    assert selection in chosen_ones

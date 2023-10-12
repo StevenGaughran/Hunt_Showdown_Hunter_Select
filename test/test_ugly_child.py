@@ -36,6 +36,7 @@ def test_get_numbers():
 
 # @pytest.mark.skip(reason="Success!")
 # Change first 'for' loop to look through the big_hunter_list, not chosen_ones.
+@pytest.mark.skip(reason="Success!")
 def test_update_hunter_list():
     chosen_ones = ["Jan", "Casey"]
     big_hunter_list = {"Jan": False,
@@ -52,9 +53,14 @@ def test_update_hunter_list():
                                "Scott": False,
                                "Steve": False}
 
-
 @pytest.mark.skip(reason="Works")
 def test_random_selection():
     chosen_ones = ["Bill", "Harry", "Karl"]
     selection = random.choice(chosen_ones)
     assert selection in chosen_ones
+
+# How do I test for a random variance?
+def test_random_selection():
+    chosen_ones = ["Bill", "Harry", "Karl"]
+    print(random.choice(chosen_ones))
+

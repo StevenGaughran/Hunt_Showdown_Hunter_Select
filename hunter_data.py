@@ -2,6 +2,7 @@ import json
 import random
 from tkinter import IntVar,Checkbutton
 
+
 """The data pulled from 'hunter_list.json', and manipulated into useable form.
 Hunter_list pulls the json data.
 Owned_hunters searches the json data for True values.
@@ -12,6 +13,7 @@ def hunter_list():
     return hunters
 
 # A list of owned hunters, based on True key values in 'hunter_list.json'
+
 def owned_hunters(hunter_list=None):
     owned = [k for k, v in hunter_list.items() if v == True]
     return owned
@@ -25,6 +27,20 @@ def unowned_hunters(hunter_list=None):
 def hunter_names(hunter_list=None):
     h_list = []
     for i in hunter_list:
+
+def owned_hunters(list):
+    owned = [k for k, v in list.items() if v == True]
+    return owned
+
+# A list of unowned hunters, based on False key values in 'hunter_list.json'
+def unowned_hunters(list):
+    unowned = [k for k, v in list.items() if v == False]
+    return unowned
+
+# Creates a list of Hunter names derived from 'hunter_list'
+def hunter_names(big_list):
+    h_list = []
+    for i in big_list:
         h_list.append(i)
     return h_list
 
@@ -58,9 +74,9 @@ def populate_hunter_list(text=None):
 
 """Gets the index numbers from the checkboxes.
 To be used in ugly_child(checkbox_selection)."""
-def get_numbers(hunter_list_numbers=None):
+def get_numbers(numbers):
     number_list = []
-    for i in hunter_list_numbers:
+    for i in numbers:
         x = i.get()
         number_list.append(x)
     return number_list
@@ -78,6 +94,11 @@ def ugly_child(get_numbers=None, hunter_names=None):
     # Find the location of i in the hunter_list
             chosen_ones.append(hunter_names[index])
     return chosen_ones
+
+"""The function that randomly selects your Hunter from 'ugly_child'."""
+def random_hunter_selection(chosen_ones=None, selection_prompt=None):
+    selection_prompt.config(text=random.choice(chosen_ones)) #How to actualize this?
+    pass
 
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.

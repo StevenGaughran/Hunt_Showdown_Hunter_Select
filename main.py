@@ -25,7 +25,7 @@ run_it = Button(
     width=20,
     height=4,
     command=lambda: hd.the_button(hunter_list_numbers=hunter_list_numbers, selection_prompt=selection_prompt)
-
+)
 run_it.pack()
 
 # Required code for Tkinter.

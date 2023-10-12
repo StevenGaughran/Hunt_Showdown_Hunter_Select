@@ -58,9 +58,3 @@ def test_random_selection():
     chosen_ones = ["Bill", "Harry", "Karl"]
     selection = random.choice(chosen_ones)
     assert selection in chosen_ones
-
-# How do I test for a random variance?
-def test_random_selection():
-    chosen_ones = ["Bill", "Harry", "Karl"]
-    print(random.choice(chosen_ones))
-

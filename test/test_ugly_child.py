@@ -36,7 +36,6 @@ def test_get_numbers():
 
 # @pytest.mark.skip(reason="Success!")
 # Change first 'for' loop to look through the big_hunter_list, not chosen_ones.
-@pytest.mark.skip(reason="Success!")
 def test_update_hunter_list():
     chosen_ones = ["Jan", "Casey"]
     big_hunter_list = {"Jan": False,
@@ -52,6 +51,7 @@ def test_update_hunter_list():
                                "Casey": True,
                                "Scott": False,
                                "Steve": False}
+
 
 @pytest.mark.skip(reason="Works")
 def test_random_selection():

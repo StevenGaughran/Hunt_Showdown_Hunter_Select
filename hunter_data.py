@@ -78,11 +78,7 @@ def ugly_child(get_numbers=None, hunter_names=None):
     # Find the location of i in the hunter_list
             chosen_ones.append(hunter_names[index])
     return chosen_ones
-
-"""The function that randomly selects your Hunter from 'ugly_child'."""
-def random_hunter_selection(chosen_ones=None, selection_prompt=None):
-    selection_prompt.config(text=random.choice(chosen_ones)) #How to actualize this?
-    
+ 
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
 Switches values in the dictionary from False to True."""

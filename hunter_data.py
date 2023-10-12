@@ -106,6 +106,7 @@ def random_hunter_selection(chosen_ones=None, selection_prompt=None):
 """The button that pulls all this nonsense together."""
 def the_button():
   pass
+
 """Determines ownership of hunters.
 Compares checkbox-selected hunters against the master list in 'hunter_list.json'.
 Switches values in the dictionary from False to True."""

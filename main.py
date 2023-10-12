@@ -21,8 +21,6 @@ text.pack()
 """# Calling the 'populate_hunter_list' function and storing the checkbutton IntVar values in a variable."""
 hunter_list_numbers = hd.populate_hunter_list(text=text)
 
-hd.populate_hunter_list(text=text)
-
 """The Button that spits up a random selection.
 Currently here, but will probably be relocated to the GUI file in the future."""
 # The button that runs the function that randomly selects your Hunter.

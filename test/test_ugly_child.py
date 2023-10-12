@@ -49,6 +49,7 @@ def test_update_hunter_list():
                                "Casey": True,
                                "Scott": False}
 
+# How do I test for a random variance?
 def test_random_selection():
     chosen_ones = ["Bill", "Harry", "Karl"]
     print(random.choice(chosen_ones))

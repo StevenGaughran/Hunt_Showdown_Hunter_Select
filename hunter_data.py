@@ -1,6 +1,6 @@
 import json
 import random
-from tkinter import IntVar,Checkbutton
+from tkinter import IntVar,Checkbutton,Toplevel,Label,Button
 
 """The data pulled from 'hunter_list.json', and manipulated into useable form.
 Hunter_list pulls the json data.
@@ -56,8 +56,7 @@ def populate_hunter_list(text=None):
             text.insert('end', '\n')
     return hunter_list_numbers
 
-"""Gets the index numbers from the checkboxes.
-To be used in ugly_child(checkbox_selection)."""
+"""Gets the index numbers from the checkbox IntVars."""
 def get_numbers(hunter_list_numbers=None):
     number_list = []
     for i in hunter_list_numbers:
@@ -66,9 +65,8 @@ def get_numbers(hunter_list_numbers=None):
     return number_list
 
 """Gets the names necessary for random selection.
-Takes the two lists and compares values. 
-Exports string with hunter names. 
-For example, checkbox_selection is a list of integers pulled from the selected checkboxes.
+Takes the two lists and creates an index. 
+Uses the index to pull the appropriate names.
 Returns a list of strings."""
 def ugly_child(get_numbers=None, hunter_names=None):
     chosen_ones = []
@@ -84,28 +82,51 @@ def random_hunter_selection(ugly_child=None):
     selection = random.choice(ugly_child)
     return selection
 
+"""Function to open a new window to place the hunter selected from 'random_hunter_selection'.
+The nested function 'close_it' makes it so the button in the new window closes the new window."""
+def top_window(window=None, selection=None):
+    new_window = Toplevel()
+    new_window.title("Your hunter is...")
+    new_window.geometry("300x200")
+
+    def close_it():
+        new_window.destroy()
+
+    hunter_announce = Label(new_window,text="Your hunter is")
+    ta_da = Label(new_window,text=selection)
+    hunter_announce.pack()
+    ta_da.pack()
+
+    close_window = Button(new_window,
+        text="Thank You!",
+        width=20,
+        height=4,
+        command=close_it
+    )
+    close_window.pack()
+
 """Updates the json database of hunters based on user input.
-Checks the output of 'chosen_ones' against the master hunter list.
-If the names in 'chosen_ones' are in the master list, makes the appropriate value 'true'.
+Checks the output of 'chosen_ones' against the 'hunter_list'.
+If the names in 'chosen_ones' are in 'hunter_list', makes the appropriate value 'true'.
 Otherwise, makes it 'false'."""
-def update_json(ugly_child=None):
-    with open('hunter_list.json', 'r') as file:
-        data = json.load(file)
-        for i in data:
-            if i in ugly_child:
-                data[i] = True
-            else:
-                data[i] = False
+def update_json(hunter_list=None,ugly_child=None):
+    data = hunter_list
+    for i in data:
+        if i in ugly_child:
+            data[i] = True
+        else:
+            data[i] = False
     with open('hunter_list.json', 'w') as f:
         json.dump(data,f)
 
-"""The button that pulls all this nonsense together.
-THIS MAY BE PROBLEMATIC. CANNOT CALL A () IN A BUTTON command= LINE
-"""
-def the_button(hunter_list_numbers=None, selection_prompt=None):
-    chosen_ones = ugly_child(
-        get_numbers=get_numbers(hunter_list_numbers),
-        hunter_names=hunter_names(hunter_list()))
+"""The button that pulls all this nonsense together."""
+def the_button(hunter_list_numbers=None,
+               selection_prompt=None,
+               window=None):
+    chosen_ones = ugly_child(get_numbers=get_numbers(hunter_list_numbers),
+                             hunter_names=hunter_names(hunter_list()))
     selection = random_hunter_selection(ugly_child=chosen_ones)
+    top_window(window,selection)
     selection_prompt.config(text=selection)
-    update_json(ugly_child=chosen_ones)
+    update_json(hunter_list=hunter_list(),
+                ugly_child=chosen_ones)

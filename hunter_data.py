@@ -130,3 +130,4 @@ def the_button(hunter_list_numbers=None,
     selection_prompt.config(text=selection)
     update_json(hunter_list=hunter_list(),
                 ugly_child=chosen_ones)
+

@@ -24,7 +24,9 @@ run_it = Button(
     text="Choose your fate!",
     width=20,
     height=4,
-    command=lambda: hd.the_button(hunter_list_numbers=hunter_list_numbers, selection_prompt=selection_prompt)
+    command=lambda: hd.the_button(hunter_list_numbers=hunter_list_numbers,
+                                  selection_prompt=selection_prompt,
+                                  window=window)
 )
 run_it.pack()
 

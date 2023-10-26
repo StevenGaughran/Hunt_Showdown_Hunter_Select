@@ -17,7 +17,7 @@ selection_prompt.pack()
 text = scrolledtext.ScrolledText()
 text.pack()
 
-"""# Calling the 'populate_hunter_list' function and storing the checkbutton IntVar values in a variable."""
+"""Calling the 'populate_hunter_list' function and storing the checkbutton IntVar values in a variable."""
 hunter_list_numbers = hd.populate_hunter_list(text=text)
 
 run_it = Button(

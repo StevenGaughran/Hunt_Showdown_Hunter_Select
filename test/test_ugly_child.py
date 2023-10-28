@@ -4,6 +4,8 @@ import json
 from hunter_data import ugly_child, random_hunter_selection, hunter_list
 from tkinter import IntVar
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Four functions that test the 'hunter_list' function.
 @pytest.mark.skip(reason="Passed")
 def test_hunter_list_file_exists():
@@ -38,6 +40,7 @@ def test_hunter_list_file_contents():
 
     result = hunter_list()
     assert result == file_data
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 @pytest.mark.skip
 def test_happy_day():

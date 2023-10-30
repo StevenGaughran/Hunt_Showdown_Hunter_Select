@@ -6,15 +6,28 @@ Will eventually be made its own Class in another document.
 For now, it works."""
 # Tkinter setup
 window = Tk()
+window.iconbitmap('icon.ico')
+window.geometry('200x500')
+window.configure(bg='black')
 window.title("Rise up, dead man! A 'Hunt: Showdown' random hunter selector!")
-greeting = Label(text="Rise up, dead man!")
+greeting = Label(text="Rise up, dead man!",
+                 bg='black',
+                 fg='white')
 greeting.pack()
 
-selection_prompt = Label(text="YOUR NEXT HUNTER IS...")
+selection_prompt = Label(text="YOUR NEXT HUNTER IS...",
+                         fg='white',
+                         bg='black',
+                         pady=8)
 selection_prompt.pack()
 
 # Tkinter Text
-text = scrolledtext.ScrolledText()
+text = scrolledtext.ScrolledText(bg='black',
+                                 fg='white',
+                                 relief='solid',
+                                 borderwidth=5,
+                                 pady=2,
+                                 padx=2)
 text.pack()
 
 """Calling the 'populate_hunter_list' function and storing the checkbutton IntVar values in a variable."""
@@ -24,6 +37,7 @@ run_it = Button(
     text="Choose your fate!",
     width=20,
     height=4,
+    borderwidth=5,
     command=lambda: hd.the_button(hunter_list_numbers=hunter_list_numbers,
                                   selection_prompt=selection_prompt,
                                   window=window)

@@ -68,9 +68,10 @@ def populate_hunter_list(text=None):
     for i in hunter_list():
         if i in owned_hunters(hunter_list()):
             var = IntVar()
-            cb = Checkbutton(pady=2,
-                             text=i,
-                             bg='white',
+            cb = Checkbutton(text=i,
+                             bg='black',
+                             fg='white',
+                             selectcolor='black',
                              anchor='w',
                              variable=var)
             cb.select()
@@ -79,9 +80,10 @@ def populate_hunter_list(text=None):
             text.insert('end', '\n')
         elif i in unowned_hunters(hunter_list()):
             var = IntVar()
-            cb = Checkbutton(pady=2,
-                             text=i,
-                             bg='white',
+            cb = Checkbutton(text=i,
+                             bg='black',
+                             fg='white',
+                             selectcolor='black',
                              anchor='w',
                              variable=var)
             hunter_list_numbers.append(var)
@@ -143,21 +145,22 @@ def top_window(window=None, selection=None):
     """
     new_window = Toplevel()
     new_window.title("Your hunter is...")
-    new_window.geometry("300x200")
+    new_window.geometry("300x150")
+    new_window.configure(bg='black')
 
     def close_it():
         """Destroys the top window when the button is pressed."""
         new_window.destroy()
 
-    hunter_announce = Label(new_window,text="Your hunter is")
-    ta_da = Label(new_window,text=selection)
+    hunter_announce = Label(new_window,text="Your hunter is", fg='white', bg='black')
+    ta_da = Label(new_window,text=selection, fg='white', bg='black', font=('Arial', 25))
     hunter_announce.pack()
     ta_da.pack()
 
     close_window = Button(new_window,
         text="Thank You!",
-        width=20,
-        height=4,
+        width=15,
+        height=2,
         command=close_it
     )
     close_window.pack()
@@ -195,6 +198,5 @@ def the_button(hunter_list_numbers=None,
                              hunter_names=hunter_names(hunter_list()))
     selection = random_hunter_selection(ugly_child=chosen_ones)
     top_window(window,selection)
-    selection_prompt.config(text=selection)
     update_json(hunter_list=hunter_list(),
                 ugly_child=chosen_ones)

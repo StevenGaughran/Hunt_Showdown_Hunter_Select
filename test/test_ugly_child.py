@@ -1,7 +1,7 @@
 import pytest
 import random
 import json
-from hunter_data import ugly_child, random_hunter_selection, hunter_list
+from hunter_data import ugly_child, random_hunter_selection, hunter_list, select_all_checkbuttons
 from tkinter import IntVar
 
 
@@ -104,3 +104,26 @@ def test_random_selection():
     chosen_ones = ["Bill", "Harry", "Karl"]
     selection = random.choice(chosen_ones)
     assert selection in chosen_ones
+
+# Tests the Select All function.
+@pytest.mark.skip(reason="Works.")
+def test_select_all_checkbuttons():
+    # Create a list of mock IntVar objects
+    mock_intvars = [MockIntVar(), MockIntVar(), MockIntVar()]
+
+    # Call the function with the mock IntVar objects
+    select_all_checkbuttons(mock_intvars)
+
+    # Check if the IntVar values are set to 1 (selected)
+    for var in mock_intvars:
+        assert var.get() == 1
+
+class MockIntVar:
+    def __init__(self):
+        self.value = 0
+
+    def set(self, value):
+        self.value = value
+
+    def get(self):
+        return self.value

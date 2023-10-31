@@ -165,6 +165,30 @@ def top_window(window=None, selection=None):
     )
     close_window.pack()
 
+def try_again_window():
+    """A window that pops up if you try and pull a random hunter using 'the_button', but no hunters are selected."""
+    new_window = Toplevel()
+    new_window.title("No hunters selected!")
+    new_window.geometry("200x70")
+    new_window.configure(bg='black',
+                         padx=2,
+                         pady=2)
+
+    no_hunters = Label(new_window, text="Please select at least ONE hunter.", fg='white', bg='black')
+    no_hunters.pack()
+
+    def close_it():
+        """Destroys the top window when the button is pressed."""
+        new_window.destroy()
+
+    close_window = Button(new_window,
+                          text="Thank You!",
+                          width=15,
+                          height=2,
+                          command=close_it
+                          )
+    close_window.pack()
+
 def update_json(hunter_list=None,ugly_child=None):
     """Updates the json database of hunters based on checkbox input.
     Checks the output of 'chosen_ones' against the 'hunter_list'.
@@ -194,9 +218,31 @@ def the_button(hunter_list_numbers=None,
         selection_prompt: 'selection_prompt' from 'main.py'.
         window: 'window' from 'main.py'.
     """
-    chosen_ones = ugly_child(get_numbers=get_numbers(hunter_list_numbers),
+    try:
+        chosen_ones = ugly_child(get_numbers=get_numbers(hunter_list_numbers),
                              hunter_names=hunter_names(hunter_list()))
-    selection = random_hunter_selection(ugly_child=chosen_ones)
-    top_window(window,selection)
-    update_json(hunter_list=hunter_list(),
-                ugly_child=chosen_ones)
+        selection = random_hunter_selection(ugly_child=chosen_ones)
+        top_window(window,selection)
+        update_json(hunter_list=hunter_list(),
+                    ugly_child=chosen_ones)
+    except IndexError:
+        try_again_window()
+
+# Select All and Deselect All buttons.
+def select_all_checkbuttons(hunter_list_numbers=None):
+    """Sets all checkbuttons from 'hunter_list_numbers' in 'main.py' to Selected.
+
+    Args:
+        hunter_list_numbers: the IntVars from 'hunter_list_numbers' in 'main.py'.
+    """
+    for var in hunter_list_numbers:
+        var.set(1)
+
+def deselect_all_checkbuttons(hunter_list_numbers=None):
+    """Sets all checkbuttons from 'hunter_list_numbers' in 'main.py' to Deselected.
+
+    Args:
+        hunter_list_numbers: the IntVars from 'hunter_list_numbers' in 'main.py'.
+    """
+    for var in hunter_list_numbers:
+        var.set(0)

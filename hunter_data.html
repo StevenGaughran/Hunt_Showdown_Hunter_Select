@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module hunter_data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>hunter_data</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Csteven%5Cdocuments%5Cgithub%5Chunt_showdown_hunter_select%5Chunter_data.py">c:\users\steven\documents\github\hunt_showdown_hunter_select\hunter_data.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-deselect_all_checkbuttons"><strong>deselect_all_checkbuttons</strong></a>(hunter_list_numbers=None)</dt><dd><tt>Sets&nbsp;all&nbsp;checkbuttons&nbsp;from&nbsp;'hunter_list_numbers'&nbsp;in&nbsp;'main.py'&nbsp;to&nbsp;Deselected.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list_numbers:&nbsp;the&nbsp;IntVars&nbsp;from&nbsp;'hunter_list_numbers'&nbsp;in&nbsp;'main.py'.</tt></dd></dl>
+ <dl><dt><a name="-get_numbers"><strong>get_numbers</strong></a>(hunter_list_numbers=None)</dt><dd><tt>Extracts&nbsp;0&nbsp;and&nbsp;1&nbsp;IntVar&nbsp;values.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list_numbers:&nbsp;IntVars&nbsp;from&nbsp;'hunter_list_numbers()'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;populated&nbsp;by&nbsp;IntVar&nbsp;values,&nbsp;either&nbsp;0&nbsp;or&nbsp;1.</tt></dd></dl>
+ <dl><dt><a name="-hunter_list"><strong>hunter_list</strong></a>()</dt><dd><tt>Loads&nbsp;a&nbsp;list&nbsp;of&nbsp;hunters&nbsp;from&nbsp;the&nbsp;file&nbsp;`hunter_list.json`&nbsp;and&nbsp;returns&nbsp;it.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;hunters&nbsp;with&nbsp;true/false&nbsp;values.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;values&nbsp;indicated&nbsp;"owned"&nbsp;hunters.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;values&nbsp;indicate&nbsp;"unowned"&nbsp;hunters.</tt></dd></dl>
+ <dl><dt><a name="-hunter_names"><strong>hunter_names</strong></a>(hunter_list=None)</dt><dd><tt>Creates&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;hunter&nbsp;names.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list:&nbsp;json&nbsp;data&nbsp;from&nbsp;'<a href="#-hunter_list">hunter_list</a>()'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;all&nbsp;hunter&nbsp;names,&nbsp;derived&nbsp;from&nbsp;'<a href="#-hunter_list">hunter_list</a>()'&nbsp;keys.</tt></dd></dl>
+ <dl><dt><a name="-owned_hunters"><strong>owned_hunters</strong></a>(hunter_list=None)</dt><dd><tt>Creates&nbsp;a&nbsp;list&nbsp;of&nbsp;"owned"&nbsp;hunters.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list:&nbsp;json&nbsp;data&nbsp;from&nbsp;'<a href="#-hunter_list">hunter_list</a>()'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;all&nbsp;hunter&nbsp;names&nbsp;with&nbsp;a&nbsp;'true'&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-populate_hunter_list"><strong>populate_hunter_list</strong></a>(text=None)</dt><dd><tt>This&nbsp;fills&nbsp;in&nbsp;the&nbsp;window&nbsp;with&nbsp;checkbuttons&nbsp;and&nbsp;hunter&nbsp;names.<br>
+Pre-selects&nbsp;them&nbsp;if&nbsp;they&nbsp;are&nbsp;'owned'.<br>
+Populates&nbsp;the&nbsp;hunter_list_numbers&nbsp;with&nbsp;returned&nbsp;IntVars.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;'scrolledtext.ScrolledText()'&nbsp;in&nbsp;'main.py'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;populated&nbsp;by&nbsp;checkbutton&nbsp;IntVars.</tt></dd></dl>
+ <dl><dt><a name="-random_hunter_selection"><strong>random_hunter_selection</strong></a>(ugly_child=None)</dt><dd><tt>Randomly&nbsp;selects&nbsp;a&nbsp;hunter&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ugly_child:&nbsp;the&nbsp;list&nbsp;of&nbsp;names&nbsp;to&nbsp;select&nbsp;from&nbsp;randomly.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;single&nbsp;name&nbsp;in&nbsp;string&nbsp;format.</tt></dd></dl>
+ <dl><dt><a name="-select_all_checkbuttons"><strong>select_all_checkbuttons</strong></a>(hunter_list_numbers=None)</dt><dd><tt>Sets&nbsp;all&nbsp;checkbuttons&nbsp;from&nbsp;'hunter_list_numbers'&nbsp;in&nbsp;'main.py'&nbsp;to&nbsp;Selected.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list_numbers:&nbsp;the&nbsp;IntVars&nbsp;from&nbsp;'hunter_list_numbers'&nbsp;in&nbsp;'main.py'.</tt></dd></dl>
+ <dl><dt><a name="-the_button"><strong>the_button</strong></a>(hunter_list_numbers=None, selection_prompt=None, window=None)</dt><dd><tt>The&nbsp;button&nbsp;that&nbsp;you&nbsp;press&nbsp;to&nbsp;make&nbsp;this&nbsp;beautiful&nbsp;disaster&nbsp;work.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list_numbers:&nbsp;numbers&nbsp;from&nbsp;'hunter_list_numbers()'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;selection_prompt:&nbsp;'selection_prompt'&nbsp;from&nbsp;'main.py'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;window:&nbsp;'window'&nbsp;from&nbsp;'main.py'.</tt></dd></dl>
+ <dl><dt><a name="-top_window"><strong>top_window</strong></a>(window=None, selection=None)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;window&nbsp;to&nbsp;place&nbsp;the&nbsp;selected&nbsp;hunter&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;window:&nbsp;'window'&nbsp;from&nbsp;'main.py'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;selection:&nbsp;The&nbsp;name&nbsp;chosen&nbsp;from&nbsp;'<a href="#-random_hunter_selection">random_hunter_selection</a>()'.</tt></dd></dl>
+ <dl><dt><a name="-try_again_window"><strong>try_again_window</strong></a>()</dt><dd><tt>A&nbsp;window&nbsp;that&nbsp;pops&nbsp;up&nbsp;if&nbsp;you&nbsp;try&nbsp;and&nbsp;pull&nbsp;a&nbsp;random&nbsp;hunter&nbsp;using&nbsp;'the_button',&nbsp;but&nbsp;no&nbsp;hunters&nbsp;are&nbsp;selected.</tt></dd></dl>
+ <dl><dt><a name="-ugly_child"><strong>ugly_child</strong></a>(get_numbers=None, hunter_names=None)</dt><dd><tt>Gets&nbsp;the&nbsp;hunter&nbsp;names&nbsp;necessary&nbsp;for&nbsp;random&nbsp;selection.<br>
+Takes&nbsp;the&nbsp;two&nbsp;lists&nbsp;and&nbsp;creates&nbsp;an&nbsp;index.<br>
+Uses&nbsp;the&nbsp;index&nbsp;to&nbsp;pull&nbsp;the&nbsp;appropriate&nbsp;names.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;get_numbers:&nbsp;numbers&nbsp;from&nbsp;'<a href="#-get_numbers">get_numbers</a>()'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_names:&nbsp;names&nbsp;from&nbsp;'<a href="#-hunter_names">hunter_names</a>()'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;names&nbsp;in&nbsp;string&nbsp;format.</tt></dd></dl>
+ <dl><dt><a name="-unowned_hunters"><strong>unowned_hunters</strong></a>(hunter_list=None)</dt><dd><tt>Creates&nbsp;a&nbsp;list&nbsp;of&nbsp;"unowned"&nbsp;hunters.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list:&nbsp;json&nbsp;data&nbsp;from&nbsp;'<a href="#-hunter_list">hunter_list</a>()'.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;all&nbsp;hunter&nbsp;names&nbsp;with&nbsp;a&nbsp;'false'&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-update_json"><strong>update_json</strong></a>(hunter_list=None, ugly_child=None)</dt><dd><tt>Updates&nbsp;the&nbsp;json&nbsp;database&nbsp;of&nbsp;hunters&nbsp;based&nbsp;on&nbsp;checkbox&nbsp;input.<br>
+Checks&nbsp;the&nbsp;output&nbsp;of&nbsp;'chosen_ones'&nbsp;against&nbsp;the&nbsp;'hunter_list'.<br>
+If&nbsp;the&nbsp;names&nbsp;in&nbsp;'chosen_ones'&nbsp;are&nbsp;in&nbsp;'hunter_list',&nbsp;makes&nbsp;the&nbsp;appropriate&nbsp;value&nbsp;'true'.<br>
+Otherwise,&nbsp;makes&nbsp;it&nbsp;'false'.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hunter_list:&nbsp;names&nbsp;from&nbsp;'<a href="#-hunter_list">hunter_list</a>()'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ugly_child:&nbsp;names&nbsp;from&nbsp;'<a href="#-ugly_child">ugly_child</a>()'.</tt></dd></dl>
+</td></tr></table>
+</body></html>
